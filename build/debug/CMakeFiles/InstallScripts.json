@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/subham/GITHUB/custom_alloc/build/debug/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

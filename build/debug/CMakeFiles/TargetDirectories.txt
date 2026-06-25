@@ -1,0 +1,3 @@
+/home/subham/GITHUB/custom_alloc/build/debug/CMakeFiles/custom_alloc.dir
+/home/subham/GITHUB/custom_alloc/build/debug/CMakeFiles/edit_cache.dir
+/home/subham/GITHUB/custom_alloc/build/debug/CMakeFiles/rebuild_cache.dir

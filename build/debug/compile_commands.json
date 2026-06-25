@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/subham/GITHUB/custom_alloc/build/debug",
+  "command": "/usr/bin/clang++-22 -I/home/subham/GITHUB/custom_alloc/include -g -std=c++23 -Wall -Wextra -Wpedantic -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wconversion -Wsign-conversion -Wnull-dereference -Wdouble-promotion -Wformat=2 -o CMakeFiles/custom_alloc.dir/src/main.cpp.o -c /home/subham/GITHUB/custom_alloc/src/main.cpp",
+  "file": "/home/subham/GITHUB/custom_alloc/src/main.cpp",
+  "output": "/home/subham/GITHUB/custom_alloc/build/debug/CMakeFiles/custom_alloc.dir/src/main.cpp.o"
+}
+]
