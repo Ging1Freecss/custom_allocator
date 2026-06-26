@@ -4,6 +4,7 @@
 #include <cstring>
 #include <memory>
 #include <memory_resource>
+#include <new>
 #include <span>
 
 namespace custom_alloc {
@@ -129,6 +130,31 @@ public:
   }
   [[nodiscard]] std::size_t used_memory() const noexcept {
     return m_curr_offset;
+  }
+
+  struct ArenaDeleter {
+    template <typename T> void operator()(T *ptr) const noexcept {
+      std::destroy_at(ptr);
+    }
+  };
+
+  template <typename T>
+    requires std::is_class_v<T>
+  using ArenaPtr = std::unique_ptr<T, ArenaDeleter>;
+
+  template <typename T, typename... Args>
+    requires std::is_class_v<T>
+  auto create(Args &&...args) -> ArenaPtr<T> {
+    void *ptr{allocate_align(sizeof(T), alignof(T))};
+
+    if (!ptr) {
+      throw std::bad_alloc();
+    }
+
+    T *obj =
+        std::construct_at(static_cast<T *>(ptr), std::forward<Args>(args)...);
+
+    return ArenaPtr<T>(obj);
   }
 
   void free_all() noexcept {

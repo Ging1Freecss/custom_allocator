@@ -78,5 +78,23 @@ void Testing_Basic_Arena() {
     std::cout << *ptr << std::endl;
     std::cout << *next_ptr << std::endl;
   }
+
+  // RAII class support
+  {
+
+    struct Player {
+      std::string name;
+      int health;
+      Player(std::string n, int h) : name(std::move(n)), health(h) {}
+    };
+
+    alignas(64) std::byte buffer[4096];
+    custom_alloc::BasicArena arena(buffer);
+
+    auto player = arena.create<Player>("Subham", 100);
+    std::cout << player->name << std::endl; // use it like a pointer
+    player->health = 200;                   // works too
+    std::cout << player->health << std::endl;
+  }
 }
 int main() { Testing_Basic_Arena(); }
